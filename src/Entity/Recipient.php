@@ -91,4 +91,9 @@ class Recipient
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return (string) json_encode(get_object_vars($this), JSON_THROW_ON_ERROR);
+    }
 }

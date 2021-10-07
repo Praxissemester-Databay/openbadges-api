@@ -20,7 +20,7 @@ class Assignment
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Badge::class)
+     * @ORM\ManyToOne(targetEntity=Badge::class, fetch="EAGER")
      * @ORM\JoinColumn(nullable=false)
      */
     private $badge;
@@ -41,7 +41,7 @@ class Assignment
     private $issuedOn;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Recipient::class)
+     * @ORM\ManyToOne(targetEntity=Recipient::class, fetch="EAGER")
      * @ORM\JoinColumn(nullable=false)
      */
     private $recipient;

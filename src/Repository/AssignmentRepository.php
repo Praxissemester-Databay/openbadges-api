@@ -19,6 +19,16 @@ class AssignmentRepository extends ServiceEntityRepository
         parent::__construct($registry, Assignment::class);
     }
 
+    public function joinedFind($id) {
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery('
+            SELECT a, b, i, r FROM App\Entity\Assignment a JOIN App\Entity\Badge b JOIN App\Entity\Issuer i JOIN App\Entity\Recipient r
+            WHERE a.id = :id AND a.badge = b.id AND a.recipient = r.id AND b.issuer = i.id')
+        ->setParameter('id', $id);
+        return $query->getResult();
+    }
+
     // /**
     //  * @return Assignment[] Returns an array of Assignment objects
     //  */

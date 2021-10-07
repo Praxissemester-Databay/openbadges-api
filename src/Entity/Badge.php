@@ -30,7 +30,7 @@ class Badge
     private $description;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Issuer::class)
+     * @ORM\ManyToOne(targetEntity=Issuer::class, fetch="EAGER")
      * @ORM\JoinColumn(nullable=false)
      */
     private $issuer;
@@ -108,5 +108,10 @@ class Badge
         $this->criteria = $criteria;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getName() ?? '';
     }
 }
