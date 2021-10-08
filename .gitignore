@@ -1,5 +1,6 @@
 .idea
 */php_errors.log
+./openbadges-validator-core/
 ###> symfony/framework-bundle ###
 /.env.local
 /.env.local.php
@@ -19,3 +20,4 @@
 /phpunit.xml
 .phpunit.result.cache
 ###< phpunit/phpunit ###
+/openbadges-validator-core/

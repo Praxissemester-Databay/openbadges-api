@@ -1,0 +1,18 @@
+{
+  "type": "Assertion",
+  "id": "http://badges/badge_api/assignment/1",
+  "@context": "https://w3id.org/openbadges/v2",
+  "recipient": {
+    "type": "email",
+    "salt": "L8bhBE4W3nwjlWAA",
+    "hashed": true,
+    "identity": "sha256$47cf7170aac227be7998dc0e11d9fde13dcfe69aadb7dd11220e838c1e0bff91"
+  },
+  "badge": "http://badges/badge_api/badge/1",
+  "issuedOn": "2021-09-12T22:00:00Z",
+  "image": {
+    "id": "http://helferfa.bplaced.net/Uni/Praxisprojekt/assets/badge_image.png"
+  },
+  "narrative": "You won!",
+  "revoked": false
+}
