@@ -7,12 +7,12 @@ use App\Entity\Issuer;
 use App\Entity\Recipient;
 use App\Entity\Badge;
 use Symfony\Component\HttpFoundation\Response;
-use http\Exception\InvalidArgumentException;
 use App\Form\RecipientType;
 use App\Form\AssignmentType;
 use App\Form\IssuerType;
 use App\Form\BadgeType;
 use Symfony\Component\HttpFoundation\Request;
+use InvalidArgumentException;
 
 class ResourceIdentifierService
 {
