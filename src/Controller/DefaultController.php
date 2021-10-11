@@ -23,7 +23,7 @@ class DefaultController extends AbstractController
     /**
      * @Route("/view/{resource}/{id}", name="viewResource")
      */
-    public function viewAssignment($resource, $id) : Response
+    public function viewAssignment($resource, $id, Request $request) : Response
     {
         try {
             [$class, ] = ResourceIdentifierService::getInstance()->identify($resource);
@@ -32,9 +32,15 @@ class DefaultController extends AbstractController
         }
         $object = $this->getDoctrine()->getRepository($class)->find($id);
         if(!$object) {
-            return new Response("Could not find Assignment with id {$id}");
+            return new Response("Could not find Assignment with id $id");
         }
-        return new Response(json_encode(JsonService::getInstance()->objectToJson($object, $resource), JSON_THROW_ON_ERROR));
+        if(ResourceIdentifierService::getInstance()->isNotAUser($request)) {
+            return new Response(json_encode(JsonService::getInstance()->objectToJson($object), JSON_THROW_ON_ERROR));
+        }
+        // TODO: render Badge
+        return $this->render('default/index.html.twig', [
+            'controller_name' => "Assignement Controller"
+        ]);
     }
 
     /**
@@ -60,5 +66,4 @@ class DefaultController extends AbstractController
             'form' => $form
         ]);
     }
-
 }

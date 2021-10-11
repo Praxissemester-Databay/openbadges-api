@@ -12,6 +12,7 @@ use App\Form\RecipientType;
 use App\Form\AssignmentType;
 use App\Form\IssuerType;
 use App\Form\BadgeType;
+use Symfony\Component\HttpFoundation\Request;
 
 class ResourceIdentifierService
 {
@@ -62,5 +63,10 @@ class ResourceIdentifierService
                 break;
         }
         return [$class, $type];
+    }
+
+    public function isNotAUser(Request $request) : bool
+    {
+         return !$request->headers->get('user-agent') || $request->headers->get('connection') === 'close' || str_contains($request->headers->get('user-agent'), 'python');
     }
 }

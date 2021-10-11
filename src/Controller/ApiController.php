@@ -25,6 +25,14 @@ class ApiController extends AbstractController
         if(!$object) {
             return new Response("Could not find Assignment with id {$id}");
         }
-        return new Response(json_encode(JsonService::getInstance()->objectToApiJson($object, $resource, $request->getSchemeAndHttpHost()), JSON_THROW_ON_ERROR));
+        $json = JsonService::getInstance()->objectToApiJson($object, $resource,
+            $request->getSchemeAndHttpHost());
+        if(ResourceIdentifierService::getInstance()->isNotAUser($request)) {
+            return new Response(json_encode($json, JSON_THROW_ON_ERROR));
+        }
+        // TODO: render Badge
+        return $this->render("resource/$resource.html.twig", [
+            'data' => $object
+        ]);
     }
 }
