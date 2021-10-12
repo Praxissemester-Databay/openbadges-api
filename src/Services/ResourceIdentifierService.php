@@ -67,6 +67,6 @@ class ResourceIdentifierService
 
     public function isNotAUser(Request $request) : bool
     {
-         return !$request->headers->get('user-agent') || $request->headers->get('connection') === 'close' || str_contains($request->headers->get('user-agent'), 'python');
+         return !$request->headers->get('user-agent') || str_contains($request->headers->get('user-agent'), 'python');
     }
 }
